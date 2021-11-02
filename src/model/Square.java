@@ -2,7 +2,7 @@ package model;
 
 public class Square {
 	
-	private Square previous;
+	private Square prev;
 	private Square next;
 	private Square top;
 	private Square bottom;
@@ -19,8 +19,8 @@ public class Square {
 		this.players = "";
 	}
 
-	public Square getPrevious() {
-		return previous;
+	public Square getprev() {
+		return prev;
 	}
 
 	public Square getNext() {
@@ -51,8 +51,8 @@ public class Square {
 		return players;
 	}
 
-	public void setPrevious(Square previous) {
-		this.previous = previous;
+	public void setprev(Square prev) {
+		this.prev = prev;
 	}
 
 	public void setNext(Square next) {
@@ -75,9 +75,6 @@ public class Square {
 		this.snake = snake;
 	}
 
-	public void setPosition(int position) {
-		this.position = position;
-	}
 
 	public void setPlayers(String players) {
 		this.players = players;
