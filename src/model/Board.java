@@ -1,7 +1,8 @@
 package model;
 
 public class Board {
-	
-	private Square first;
+
+	private Square start;
+	private Square home;
 	
 }
