@@ -11,15 +11,15 @@ public class Square {
 	private int position;
 	private String players;
 	
-	public Square( int position )
+	public Square()
 	{
-		this.position = position;
+		this.position = 0;
 		this.snake = ' ';
 		this.ladder = ' ';
 		this.players = "";
 	}
 
-	public Square getprev() {
+	public Square getPrev() {
 		return prev;
 	}
 
@@ -51,7 +51,7 @@ public class Square {
 		return players;
 	}
 
-	public void setprev(Square prev) {
+	public void setPrev(Square prev) {
 		this.prev = prev;
 	}
 
