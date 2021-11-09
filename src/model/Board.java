@@ -17,6 +17,7 @@ public class Board {
 		this.e = e;
 		start = new Square();
 		buildBoard();
+		completeBoardLinks(start.getNext());
 	}
 	
 	//---------------------------Methods------------------------
@@ -49,7 +50,7 @@ public class Board {
 			}
 		}
 	}
-
+	
 	public void addSquareCols(Square prevSquare, int rows)
 	{
 		Square newSquare = new Square();
@@ -57,5 +58,28 @@ public class Board {
 		newSquare.setBottom(prevSquare);
 		addSquareRows(newSquare,0, rows+1 );
 	}
+
+	public void completeBoardLinks(Square toLink)
+	{
+		Square top = toLink.getPrev().getTop();
 		
+		if(top == null)
+		{
+			return;
+		}
+		else
+		{
+			toLink.setTop(top.getNext());
+			top.getNext().setBottom(toLink);			
+			completeBoardLinks(toLink.getTop());
+			if( toLink.getNext() != null)
+			{
+				completeBoardLinks(toLink.getNext());
+			}
+		}
+	}
+	
+	
+	
+	
   }
