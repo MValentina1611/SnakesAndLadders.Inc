@@ -15,44 +15,47 @@ public class Board {
 		this.m = m;
 		this.s = s;
 		this.e = e;
+		start = new Square();
 		buildBoard();
 	}
 	
 	//---------------------------Methods------------------------
 	
-	
 	//Build the game board
-	
 	public void buildBoard()
-	{	
-		start = new Square();
-		addSquareRowsRight(start,start.getPosition()+1);
-		addSquareCols(start,1);
+	{
+		addSquareRows(start, 0, 0);
+	}
+	
+	public void addSquareRows(Square prevSquare, int cols, int rows )
+	{
+		Square newSquare = new Square();
+		
+		if(cols < m-1)
+		{
+			prevSquare.setNext(newSquare);
+			newSquare.setPrev(prevSquare);
+			addSquareRows(newSquare, cols+1, rows);
+		}
+		else
+		{
+			if( rows < n-1 )
+			{
+				addSquareCols(prevSquare, rows);
+			}
+			else
+			{
+				return;
+			}
+		}
 	}
 
-	private void addSquareRowsRight(Square square, int position) 
+	public void addSquareCols(Square prevSquare, int rows)
 	{
-		if(position < m)
-		{
-			Square newSquare = new Square();
-			square.setNext(newSquare);
-			newSquare.setPrev(square);
-			addSquareCols(newSquare, 1);
-			addSquareRowsRight(newSquare,newSquare.getPosition()+1);
-		}
-	
-	}
-	
-	private void addSquareCols(Square square, int row)
-	{
-		if(row < n)
-		{
-			Square newSquare = new Square();
-			square.setTop(newSquare);
-			newSquare.setBottom(square);
-		
-			addSquareCols(newSquare, row++);
-		}
+		Square newSquare = new Square();
+		prevSquare.setTop(newSquare);
+		newSquare.setBottom(prevSquare);
+		addSquareRows(newSquare,0, rows+1 );
 	}
 		
-}
+  }
