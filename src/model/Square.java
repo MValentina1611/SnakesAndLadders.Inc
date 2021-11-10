@@ -80,7 +80,16 @@ public class Square {
 		this.players = players;
 	}
 	
+	public void setPosition(int position) {
+		this.position = position;
+	}
 	
-	
+	public String toString()
+	{
+		String info = "";
+		info = "["+ position + ladder + snake + "]";	
+			
+		return info;	
+	}
 
 }

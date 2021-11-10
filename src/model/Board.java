@@ -4,7 +4,7 @@ public class Board {
 
 	//Attributes
 	private Square start;
-	private Square finish;
+	
 	private int n,m,s,e;
 	
 	
@@ -18,6 +18,7 @@ public class Board {
 		start = new Square();
 		buildBoard();
 		completeBoardLinks(start.getNext());
+		//addPosition(start, 1);
 	}
 	
 	//---------------------------Methods------------------------
@@ -26,6 +27,7 @@ public class Board {
 	public void buildBoard()
 	{
 		addSquareRows(start, 0, 0);
+		System.out.println(start.toString());
 	}
 	
 	public void addSquareRows(Square prevSquare, int cols, int rows )
@@ -37,6 +39,7 @@ public class Board {
 			prevSquare.setNext(newSquare);
 			newSquare.setPrev(prevSquare);
 			addSquareRows(newSquare, cols+1, rows);
+			System.out.print(newSquare.toString());
 		}
 		else
 		{
@@ -56,7 +59,9 @@ public class Board {
 		Square newSquare = new Square();
 		prevSquare.setTop(newSquare);
 		newSquare.setBottom(prevSquare);
+		
 		addSquareRows(newSquare,0, rows+1 );
+		System.out.println(newSquare.toString());
 	}
 
 	public void completeBoardLinks(Square toLink)
@@ -78,8 +83,26 @@ public class Board {
 			}
 		}
 	}
-	
-	
-	
+	 
+	/*
+	public String printBoard( Square toPrint)
+	{
+		String info = "";
+		
+		if( toPrint.getNext() != null )
+		{
+			info += toPrint.toString();
+			printBoard( toPrint.getNext());
+			printBoard( toPrint.getTop());
+		}
+		System.out.println(info);
+		
+		
+	}
+	*/
+	public Square getStart() 
+	{
+		return start;
+	}
 	
   }
